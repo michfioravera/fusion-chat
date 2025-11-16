@@ -1,12 +1,27 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useSharedData } from "@/context/SharedDataProvider";
 import { MessageClusterGraph } from "@/components/MessageClusterGraph";
 import { ChatPanel } from "@/components/ChatPanel";
 import { WordHighlightOverlay } from "@/components/WordHighlightOverlay";
 import { deleteUserMessages } from "@/utils/supabaseClient";
 import { AlertCircle, Zap } from "lucide-react";
 
-export default function ChatApp() {
+async function importSharedData() {
+  const { useSharedData, SharedDataProvider } = await import("@/context/SharedDataProvider");
+  return { useSharedData, SharedDataProvider };
+}
+
+function ChatAppContent() {
+  const { useSharedData } = require("@/context/SharedDataProvider");
+
+  const {
+    messages,
+    clusterGraph,
+    activeWordInfo,
+    setActiveWord,
+    addMessage,
+    isLoading,
+    error,
+  } = useSharedData();
   const {
     messages,
     clusterGraph,
