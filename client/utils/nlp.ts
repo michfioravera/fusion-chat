@@ -35,10 +35,16 @@ let embedder: any = null;
 
 async function getEmbedder() {
   if (!embedder) {
-    embedder = await pipeline(
-      "feature-extraction",
-      "Xenova/all-MiniLM-L6-v2"
-    );
+    try {
+      const { pipeline } = await import("@xenova/transformers");
+      embedder = await pipeline(
+        "feature-extraction",
+        "Xenova/all-MiniLM-L6-v2"
+      );
+    } catch (error) {
+      console.error("Failed to initialize embedder:", error);
+      throw error;
+    }
   }
   return embedder;
 }
