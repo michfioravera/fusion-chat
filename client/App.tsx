@@ -28,19 +28,19 @@ const LoadingFallback = () => (
   </div>
 );
 
-// Lazy load SharedDataProvider to avoid circular dependencies
-const SharedDataProviderLazy = lazy(async () => {
+// Lazy load the Chat route with its provider
+const ChatRoute = lazy(async () => {
   const { SharedDataProvider } = await import("./context/SharedDataProvider");
-  return { default: SharedDataProvider };
-});
+  const ChatAppComponent = (await import("./pages/ChatApp")).default;
 
-const ChatAppWithProvider = () => (
-  <Suspense fallback={<LoadingFallback />}>
-    <SharedDataProviderLazy>
-      <ChatApp />
-    </SharedDataProviderLazy>
-  </Suspense>
-);
+  const ChatAppWithProvider = () => (
+    <SharedDataProvider>
+      <ChatAppComponent />
+    </SharedDataProvider>
+  );
+
+  return { default: ChatAppWithProvider };
+});
 
 const App = () => {
   return (
