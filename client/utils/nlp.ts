@@ -1,5 +1,3 @@
-import { pipeline } from "@xenova/transformers";
-
 export interface ClusterNode {
   id: string;
   label: string;
