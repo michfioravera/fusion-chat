@@ -10,7 +10,7 @@ import {
   fetchMessages,
   subscribeToMessages,
 } from "@/utils/supabaseClient";
-import { computeClusterGraph, ClusterGraph } from "@/utils/nlp";
+import { ClusterGraph } from "@/utils/nlp";
 
 export interface ActiveWordInfo {
   word: string;
