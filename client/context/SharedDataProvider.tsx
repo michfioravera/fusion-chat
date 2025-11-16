@@ -97,10 +97,12 @@ export function SharedDataProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const recomputeClusters = async () => {
       try {
+        const { computeClusterGraph } = await import("@/utils/nlp");
         const graph = await computeClusterGraph(messages, 3);
         setClusterGraph(graph);
       } catch (err) {
         console.error("Error computing clusters:", err);
+        // Keep previous graph if recomputation fails
       }
     };
 
