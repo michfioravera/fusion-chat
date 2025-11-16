@@ -50,9 +50,16 @@ export function SharedDataProvider({ children }: { children: ReactNode }) {
         const initialMessages = await fetchMessages();
         setMessages(initialMessages);
 
-        // Compute initial clusters
-        const graph = await computeClusterGraph(initialMessages, 3);
-        setClusterGraph(graph);
+        // Compute initial clusters (lazy import NLP)
+        try {
+          const { computeClusterGraph } = await import("@/utils/nlp");
+          const graph = await computeClusterGraph(initialMessages, 3);
+          setClusterGraph(graph);
+        } catch (nlpError) {
+          console.error("Error computing clusters:", nlpError);
+          // Continue without clusters if NLP fails
+          setClusterGraph(null);
+        }
 
         setError(null);
       } catch (err) {
