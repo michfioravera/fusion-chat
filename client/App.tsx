@@ -6,7 +6,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, ReactNode } from "react";
+import { SharedDataProvider } from "@/context/SharedDataProvider";
 
 const Index = lazy(() => import("./pages/Index"));
 const ChatApp = lazy(() => import("./pages/ChatApp"));
@@ -28,6 +29,13 @@ const LoadingFallback = () => (
   </div>
 );
 
+// Wrapper component to provide SharedDataProvider context to ChatApp
+const ChatAppWithProvider = () => (
+  <SharedDataProvider>
+    <ChatApp />
+  </SharedDataProvider>
+);
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -38,7 +46,7 @@ const App = () => {
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/app" element={<ChatApp />} />
+              <Route path="/app" element={<ChatAppWithProvider />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
