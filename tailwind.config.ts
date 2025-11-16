@@ -97,10 +97,6 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         blob: "blob 7s infinite",
       },
-      transitionDelay: {
-        "2000": "2000ms",
-        "4000": "4000ms",
-      },
     },
   },
   plugins: [require("tailwindcss-animate")],
