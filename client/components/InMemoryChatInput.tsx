@@ -60,7 +60,7 @@ export const InMemoryChatInput: React.FC<ChatInputProps> = ({
             "px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors",
             input.trim() && !isSending
               ? "bg-blue-600 text-white hover:bg-blue-700"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed",
           )}
         >
           <Send className="w-4 h-4" />

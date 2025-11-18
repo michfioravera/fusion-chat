@@ -19,8 +19,25 @@ const LoadingFallback = () => (
     <div className="text-center">
       <div className="animate-spin inline-block mb-4">
         <svg className="w-8 h-8" viewBox="0 0 50 50">
-          <circle cx="25" cy="25" r="20" stroke="currentColor" strokeWidth="5" fill="none" opacity="0.3" />
-          <circle cx="25" cy="25" r="20" stroke="currentColor" strokeWidth="5" fill="none" strokeDasharray="100" strokeDashoffset="75" />
+          <circle
+            cx="25"
+            cy="25"
+            r="20"
+            stroke="currentColor"
+            strokeWidth="5"
+            fill="none"
+            opacity="0.3"
+          />
+          <circle
+            cx="25"
+            cy="25"
+            r="20"
+            stroke="currentColor"
+            strokeWidth="5"
+            fill="none"
+            strokeDasharray="100"
+            strokeDashoffset="75"
+          />
         </svg>
       </div>
       <p className="font-medium">Loading...</p>

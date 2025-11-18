@@ -42,8 +42,12 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
     const height = containerRef.current.clientHeight;
 
     // Copy data for D3
-    const nodes: (ClusterNode & { x?: number; y?: number; vx?: number; vy?: number })[] =
-      clusterGraph.nodes.map((d) => ({ ...d }));
+    const nodes: (ClusterNode & {
+      x?: number;
+      y?: number;
+      vx?: number;
+      vy?: number;
+    })[] = clusterGraph.nodes.map((d) => ({ ...d }));
     const links = clusterGraph.edges.map((d) => ({
       source: d.source,
       target: d.target,
@@ -67,7 +71,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
           .forceLink(links as any)
           .id((d: any) => d.id)
           .distance((d: any) => 60 * (1 - d.weight))
-          .strength(0.5)
+          .strength(0.5),
       )
       .force("charge", d3.forceManyBody().strength(-300))
       .force("center", d3.forceCenter(width / 2, height / 2))
@@ -150,7 +154,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
             if (!event.active) simulation.alphaTarget(0);
             d.fx = null;
             d.fy = null;
-          }) as any
+          }) as any,
       );
 
     // Add labels
@@ -191,7 +195,11 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
       ref={containerRef}
       className="w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg overflow-hidden"
     >
-      <svg ref={svgRef} className="w-full h-full" style={{ display: "block" }} />
+      <svg
+        ref={svgRef}
+        className="w-full h-full"
+        style={{ display: "block" }}
+      />
 
       {clusterGraph.nodes.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center text-center pointer-events-none">

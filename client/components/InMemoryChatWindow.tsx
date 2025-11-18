@@ -80,7 +80,9 @@ export const InMemoryChatWindow: React.FC<ChatWindowProps> = ({
           <div className="flex items-center justify-center h-full text-center text-gray-400">
             <div>
               <p className="font-medium">No messages yet</p>
-              <p className="text-sm mt-1">Start typing to see messages appear</p>
+              <p className="text-sm mt-1">
+                Start typing to see messages appear
+              </p>
             </div>
           </div>
         ) : (
@@ -98,16 +100,14 @@ export const InMemoryChatWindow: React.FC<ChatWindowProps> = ({
                     : isCurrentUser
                       ? "bg-blue-50 border-l-4 border-blue-400"
                       : "bg-gray-100 border-l-4 border-gray-300",
-                  "hover:shadow-sm"
+                  "hover:shadow-sm",
                 )}
               >
                 <div className="flex items-start justify-between gap-2 mb-1">
                   <span
                     className={cn(
                       "font-semibold text-sm",
-                      isCurrentUser
-                        ? "text-blue-700"
-                        : "text-gray-700"
+                      isCurrentUser ? "text-blue-700" : "text-gray-700",
                     )}
                   >
                     {message.user}

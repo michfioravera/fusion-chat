@@ -39,18 +39,110 @@ function tokenize(text: string): string[] {
 
 // Common English stopwords
 const STOPWORDS = new Set([
-  "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for",
-  "of", "with", "by", "from", "is", "are", "was", "were", "be", "been",
-  "being", "have", "has", "had", "do", "does", "did", "will", "would",
-  "could", "should", "may", "might", "must", "can", "this", "that",
-  "these", "those", "i", "you", "he", "she", "it", "we", "they", "what",
-  "which", "who", "when", "where", "why", "how", "all", "each", "every",
-  "both", "few", "more", "most", "other", "some", "such", "no", "nor",
-  "not", "only", "own", "same", "so", "than", "too", "very", "as",
-  "just", "if", "into", "through", "during", "before", "after", "above",
-  "below", "up", "down", "out", "off", "over", "under", "again", "further",
-  "then", "once", "here", "there", "about", "me", "my", "him", "her",
-  "his", "them", "their"
+  "the",
+  "a",
+  "an",
+  "and",
+  "or",
+  "but",
+  "in",
+  "on",
+  "at",
+  "to",
+  "for",
+  "of",
+  "with",
+  "by",
+  "from",
+  "is",
+  "are",
+  "was",
+  "were",
+  "be",
+  "been",
+  "being",
+  "have",
+  "has",
+  "had",
+  "do",
+  "does",
+  "did",
+  "will",
+  "would",
+  "could",
+  "should",
+  "may",
+  "might",
+  "must",
+  "can",
+  "this",
+  "that",
+  "these",
+  "those",
+  "i",
+  "you",
+  "he",
+  "she",
+  "it",
+  "we",
+  "they",
+  "what",
+  "which",
+  "who",
+  "when",
+  "where",
+  "why",
+  "how",
+  "all",
+  "each",
+  "every",
+  "both",
+  "few",
+  "more",
+  "most",
+  "other",
+  "some",
+  "such",
+  "no",
+  "nor",
+  "not",
+  "only",
+  "own",
+  "same",
+  "so",
+  "than",
+  "too",
+  "very",
+  "as",
+  "just",
+  "if",
+  "into",
+  "through",
+  "during",
+  "before",
+  "after",
+  "above",
+  "below",
+  "up",
+  "down",
+  "out",
+  "off",
+  "over",
+  "under",
+  "again",
+  "further",
+  "then",
+  "once",
+  "here",
+  "there",
+  "about",
+  "me",
+  "my",
+  "him",
+  "her",
+  "his",
+  "them",
+  "their",
 ]);
 
 function isStopword(word: string): boolean {
@@ -107,7 +199,7 @@ function calculateIDF(allTokens: string[][]): DocumentFrequency {
 function kmeans(
   vectors: { [key: string]: number }[],
   k: number,
-  maxIterations: number = 100
+  maxIterations: number = 100,
 ): {
   clusters: number[];
   centroids: { [key: string]: number }[];
@@ -161,7 +253,9 @@ function kmeans(
 
       const newCentroid: { [key: string]: number } = {};
       const allKeys = new Set<string>();
-      pointsInCluster.forEach((p) => Object.keys(p).forEach((k) => allKeys.add(k)));
+      pointsInCluster.forEach((p) =>
+        Object.keys(p).forEach((k) => allKeys.add(k)),
+      );
 
       for (const key of allKeys) {
         newCentroid[key] =
@@ -193,7 +287,7 @@ function kmeans(
 
 function euclideanDistance(
   a: { [key: string]: number },
-  b: { [key: string]: number }
+  b: { [key: string]: number },
 ): number {
   let sum = 0;
   const allKeys = new Set([...Object.keys(a), ...Object.keys(b)]);
@@ -208,7 +302,7 @@ function euclideanDistance(
 
 function cosineSimilarity(
   a: { [key: string]: number },
-  b: { [key: string]: number }
+  b: { [key: string]: number },
 ): number {
   let dotProduct = 0;
   let normA = 0;
@@ -233,7 +327,7 @@ function cosineSimilarity(
 // Main clustering function
 export function computeClusterGraph(
   messages: Message[],
-  k: number = 3
+  k: number = 3,
 ): ClusterGraph {
   if (messages.length === 0) {
     return { nodes: [], edges: [] };
@@ -324,9 +418,11 @@ export function computeClusterGraph(
 
       // Co-occurrence: terms that appear in same messages
       const commonMessages = nodeA.messageIds.filter((id) =>
-        nodeB.messageIds.includes(id)
+        nodeB.messageIds.includes(id),
       );
-      const cooccurrence = commonMessages.length / Math.max(nodeA.messageIds.length, nodeB.messageIds.length);
+      const cooccurrence =
+        commonMessages.length /
+        Math.max(nodeA.messageIds.length, nodeB.messageIds.length);
 
       // Similarity: if same cluster or high co-occurrence
       if (nodeA.cluster === nodeB.cluster || cooccurrence > 0.2) {

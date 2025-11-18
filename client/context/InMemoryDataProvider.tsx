@@ -6,7 +6,11 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { computeClusterGraph, ClusterGraph, Message } from "@/utils/nlpInMemory";
+import {
+  computeClusterGraph,
+  ClusterGraph,
+  Message,
+} from "@/utils/nlpInMemory";
 
 // Simple ID generator without external dependencies
 function generateId(): string {
@@ -22,7 +26,7 @@ interface InMemoryContextType {
 }
 
 const InMemoryContext = createContext<InMemoryContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function InMemoryDataProvider({ children }: { children: ReactNode }) {
@@ -75,9 +79,7 @@ export function InMemoryDataProvider({ children }: { children: ReactNode }) {
 export function useInMemoryData(): InMemoryContextType {
   const context = useContext(InMemoryContext);
   if (context === undefined) {
-    throw new Error(
-      "useInMemoryData must be used within InMemoryDataProvider"
-    );
+    throw new Error("useInMemoryData must be used within InMemoryDataProvider");
   }
   return context;
 }

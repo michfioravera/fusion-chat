@@ -161,9 +161,13 @@ export default function InMemoryChat() {
         <div className="border-t border-white/10 bg-slate-900/50 backdrop-blur-md px-6 py-3 text-sm text-gray-300">
           <div className="flex items-center justify-between">
             <span>
-              Selected: <span className="font-bold text-blue-400">{selectedNode.label}</span> (
-              {selectedNode.frequency} occurrences across {selectedNode.messageIds.length}{" "}
-              message{selectedNode.messageIds.length !== 1 ? "s" : ""})
+              Selected:{" "}
+              <span className="font-bold text-blue-400">
+                {selectedNode.label}
+              </span>{" "}
+              ({selectedNode.frequency} occurrences across{" "}
+              {selectedNode.messageIds.length} message
+              {selectedNode.messageIds.length !== 1 ? "s" : ""})
             </span>
             <button
               onClick={() => setSelectedNode(null)}

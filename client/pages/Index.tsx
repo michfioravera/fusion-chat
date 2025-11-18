@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Zap, MessageSquare, Network, Sparkles, ArrowRight } from "lucide-react";
+import {
+  Zap,
+  MessageSquare,
+  Network,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -10,8 +16,14 @@ export default function Index() {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" style={{ animationDelay: "4s" }}></div>
+        <div
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
+          style={{ animationDelay: "4s" }}
+        ></div>
       </div>
 
       {/* Content */}
@@ -46,7 +58,10 @@ export default function Index() {
             </h1>
 
             <p className="text-xl text-gray-300 leading-relaxed max-w-xl">
-              Experience a revolutionary chat interface powered by NLP-driven message clustering and interactive visualization. See conversations evolve in real-time through an intelligent, force-directed graph.
+              Experience a revolutionary chat interface powered by NLP-driven
+              message clustering and interactive visualization. See
+              conversations evolve in real-time through an intelligent,
+              force-directed graph.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -62,7 +77,11 @@ export default function Index() {
                 variant="outline"
                 size="lg"
                 className="border-gray-600 text-gray-300 hover:bg-gray-800/50"
-                onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document
+                    .getElementById("features")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 Learn More
               </Button>
@@ -122,7 +141,8 @@ export default function Index() {
                   <div>
                     <h3 className="font-semibold text-lg">Interactive Graph</h3>
                     <p className="text-sm text-gray-400 mt-1">
-                      Draggable D3 force-directed visualization of word relationships
+                      Draggable D3 force-directed visualization of word
+                      relationships
                     </p>
                   </div>
                 </div>
@@ -132,10 +152,7 @@ export default function Index() {
         </div>
 
         {/* Features Section */}
-        <div
-          id="features"
-          className="max-w-7xl mx-auto px-6 py-20 space-y-12"
-        >
+        <div id="features" className="max-w-7xl mx-auto px-6 py-20 space-y-12">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl font-bold">How It Works</h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -151,7 +168,8 @@ export default function Index() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Send Messages</h3>
               <p className="text-gray-400">
-                Type messages in the chat panel. Your messages are instantly saved to Supabase and broadcast to all users in real-time.
+                Type messages in the chat panel. Your messages are instantly
+                saved to Supabase and broadcast to all users in real-time.
               </p>
             </div>
 
@@ -162,7 +180,8 @@ export default function Index() {
               </div>
               <h3 className="text-2xl font-bold mb-4">AI Clustering</h3>
               <p className="text-gray-400">
-                Our NLP pipeline tokenizes, embeds, and clusters words using k-means. Related words form clusters in the visualization.
+                Our NLP pipeline tokenizes, embeds, and clusters words using
+                k-means. Related words form clusters in the visualization.
               </p>
             </div>
 
@@ -173,7 +192,8 @@ export default function Index() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Explore Graph</h3>
               <p className="text-gray-400">
-                Click nodes in the force-directed graph to highlight all messages containing that word. Drag to explore relationships.
+                Click nodes in the force-directed graph to highlight all
+                messages containing that word. Drag to explore relationships.
               </p>
             </div>
           </div>
@@ -184,7 +204,8 @@ export default function Index() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl font-bold">Built With Modern Tech</h2>
             <p className="text-xl text-gray-400">
-              Cutting-edge libraries for real-time communication and visualization
+              Cutting-edge libraries for real-time communication and
+              visualization
             </p>
           </div>
 
@@ -215,7 +236,9 @@ export default function Index() {
           <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-md border border-white/20 rounded-2xl p-12 text-center space-y-6">
             <h2 className="text-4xl font-bold">Ready to Experience It?</h2>
             <p className="text-xl text-gray-300">
-              Start chatting now and watch as your messages are intelligently organized and visualized in real-time. Everything runs in your browser with zero external dependencies.
+              Start chatting now and watch as your messages are intelligently
+              organized and visualized in real-time. Everything runs in your
+              browser with zero external dependencies.
             </p>
             <Button
               onClick={() => navigate("/chat")}
