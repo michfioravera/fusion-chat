@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 const Index = lazy(() => import("./pages/Index"));
-const ChatApp = lazy(() => import("./pages/ChatApp"));
 const InMemoryChatPage = lazy(() => import("./pages/InMemoryChat"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -28,20 +27,6 @@ const LoadingFallback = () => (
     </div>
   </div>
 );
-
-// Lazy load the Chat route with Supabase provider
-const ChatRoute = lazy(async () => {
-  const { SharedDataProvider } = await import("./context/SharedDataProvider");
-  const ChatAppComponent = (await import("./pages/ChatApp")).default;
-
-  const ChatAppWithProvider = () => (
-    <SharedDataProvider>
-      <ChatAppComponent />
-    </SharedDataProvider>
-  );
-
-  return { default: ChatAppWithProvider };
-});
 
 // Lazy load the In-Memory Chat route with in-memory provider
 const InMemoryChatRoute = lazy(async () => {
