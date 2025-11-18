@@ -239,24 +239,20 @@ export function computeClusterGraph(
     return { nodes: [], edges: [] };
   }
 
-  // Extract all terms (n-grams) and their document associations
+  // Extract all tokens and their document associations
   const termToMessages: { [term: string]: string[] } = {};
   const allTokensList: string[][] = [];
-  const allNgramsList: string[][] = [];
 
   for (const message of messages) {
     const tokens = tokenize(message.text);
     allTokensList.push(tokens);
 
-    const ngrams = extractNgrams(tokens);
-    allNgramsList.push(ngrams);
-
-    for (const ngram of ngrams) {
-      if (!termToMessages[ngram]) {
-        termToMessages[ngram] = [];
+    for (const token of tokens) {
+      if (!termToMessages[token]) {
+        termToMessages[token] = [];
       }
-      if (!termToMessages[ngram].includes(message.id)) {
-        termToMessages[ngram].push(message.id);
+      if (!termToMessages[token].includes(message.id)) {
+        termToMessages[token].push(message.id);
       }
     }
   }
