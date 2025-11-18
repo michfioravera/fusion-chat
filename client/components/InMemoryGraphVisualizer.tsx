@@ -166,10 +166,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
       .data(nodes)
       .enter()
       .append("text")
-      .text((d: ClusterNode) => {
-        const label = d.label;
-        return label.length > 15 ? label.substring(0, 13) + "." : label;
-      });
+      .text((d: ClusterNode) => d.label);
 
     // Update on tick
     simulation.on("tick", () => {
