@@ -194,10 +194,10 @@ export default function Index() {
               { name: "Vite", desc: "Build Tool" },
               { name: "Tailwind CSS", desc: "Styling" },
               { name: "TypeScript", desc: "Type Safety" },
-              { name: "Supabase", desc: "Real-time DB" },
-              { name: "Transformers.js", desc: "NLP Embeddings" },
               { name: "D3.js", desc: "Visualization" },
-              { name: "TanStack Query", desc: "Data Fetching" },
+              { name: "TF-IDF", desc: "NLP Clustering" },
+              { name: "K-means", desc: "Clustering Algorithm" },
+              { name: "Pure JS", desc: "No Dependencies" },
             ].map((tech) => (
               <div
                 key={tech.name}
