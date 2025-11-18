@@ -290,12 +290,12 @@ export function computeClusterGraph(
   // Get all unique terms
   const terms = Object.keys(termToMessages);
 
-  // Calculate TF-IDF for each document
-  const idf = calculateIDF(allTokensList);
+  // Calculate TF-IDF for each document using n-grams
+  const idf = calculateIDF(allNgramsList);
   const tfidfVectors: { [key: string]: number }[] = [];
 
-  for (const tokens of allTokensList) {
-    const tf = calculateTF(tokens);
+  for (const ngrams of allNgramsList) {
+    const tf = calculateTF(ngrams);
     const tfidfVector: { [key: string]: number } = {};
 
     for (const term in tf) {
