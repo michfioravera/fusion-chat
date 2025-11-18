@@ -10,6 +10,7 @@ import { lazy, Suspense } from "react";
 
 const Index = lazy(() => import("./pages/Index"));
 const ChatApp = lazy(() => import("./pages/ChatApp"));
+const InMemoryChatPage = lazy(() => import("./pages/InMemoryChat"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
