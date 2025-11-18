@@ -29,7 +29,7 @@ const LoadingFallback = () => (
   </div>
 );
 
-// Lazy load the Chat route with its provider
+// Lazy load the Chat route with Supabase provider
 const ChatRoute = lazy(async () => {
   const { SharedDataProvider } = await import("./context/SharedDataProvider");
   const ChatAppComponent = (await import("./pages/ChatApp")).default;
@@ -41,6 +41,22 @@ const ChatRoute = lazy(async () => {
   );
 
   return { default: ChatAppWithProvider };
+});
+
+// Lazy load the In-Memory Chat route with in-memory provider
+const InMemoryChatRoute = lazy(async () => {
+  const { InMemoryDataProvider } = await import(
+    "./context/InMemoryDataProvider"
+  );
+  const InMemoryChatComponent = (await import("./pages/InMemoryChat")).default;
+
+  const InMemoryChatWithProvider = () => (
+    <InMemoryDataProvider>
+      <InMemoryChatComponent />
+    </InMemoryDataProvider>
+  );
+
+  return { default: InMemoryChatWithProvider };
 });
 
 const App = () => {
