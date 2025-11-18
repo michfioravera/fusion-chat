@@ -211,77 +211,20 @@ export default function Index() {
         </div>
 
         {/* CTA Section */}
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="text-center space-y-8 mb-12">
+        <div className="max-w-4xl mx-auto px-6 py-20">
+          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-md border border-white/20 rounded-2xl p-12 text-center space-y-6">
             <h2 className="text-4xl font-bold">Ready to Experience It?</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Choose your preferred version. Both support real-time chat with intelligent clustering and interactive graph visualization.
+            <p className="text-xl text-gray-300">
+              Start chatting now and watch as your messages are intelligently organized and visualized in real-time. Everything runs in your browser with zero external dependencies.
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Supabase Version Card */}
-            <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-md border border-white/20 rounded-2xl p-8 space-y-6">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Supabase Version</h3>
-                <p className="text-gray-300">
-                  Connected to a real database. Perfect for multi-user deployments with persistent storage.
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-400">✓</span> Real-time database sync
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-400">✓</span> Persistent storage
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-400">✓</span> Multi-user support
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-400">✓</span> Advanced NLP with Transformers.js
-                </li>
-              </ul>
-              <Button
-                onClick={() => navigate("/app")}
-                size="lg"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-              >
-                <Sparkles className="w-5 h-5 mr-2" />
-                Launch Supabase Version
-              </Button>
-            </div>
-
-            {/* In-Memory Version Card */}
-            <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/20 backdrop-blur-md border border-white/20 rounded-2xl p-8 space-y-6">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">In-Memory Version</h3>
-                <p className="text-gray-300">
-                  No external dependencies. Everything runs in the browser for instant, lightweight performance.
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> No external APIs
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> Session-only storage
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> Pure JavaScript TF-IDF + K-means
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> Fast & lightweight
-                </li>
-              </ul>
-              <Button
-                onClick={() => navigate("/chat")}
-                size="lg"
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white border-0"
-              >
-                <MessageSquare className="w-5 h-5 mr-2" />
-                Launch In-Memory Version
-              </Button>
-            </div>
+            <Button
+              onClick={() => navigate("/chat")}
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 text-base px-8"
+            >
+              <Sparkles className="w-5 h-5 mr-2" />
+              Launch Fusion Chat Now
+            </Button>
           </div>
         </div>
       </div>
