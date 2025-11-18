@@ -32,7 +32,6 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
   const { clusterGraph } = useInMemoryData();
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
     if (!svgRef.current || !containerRef.current || !clusterGraph) {
@@ -95,10 +94,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
       .data(nodes)
       .enter()
       .append("circle")
-      .attr("r", (d: ClusterNode) => {
-        const base = 8 + Math.sqrt(d.frequency) * 4;
-        return hoveredNode === d.id ? base + 5 : base;
-      })
+      .attr("r", (d: ClusterNode) => 8 + Math.sqrt(d.frequency) * 4)
       .attr("fill", (d: ClusterNode) => COLORS[d.cluster % COLORS.length])
       .attr("cursor", "pointer")
       .attr("opacity", (d: ClusterNode) => {
@@ -106,8 +102,6 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
         return d.id === highlightedNodeId ? 1 : 0.3;
       })
       .on("mouseenter", function (event: MouseEvent, d: ClusterNode) {
-        setHoveredNode(d.id);
-
         d3.select(this)
           .transition()
           .duration(200)
@@ -128,8 +122,6 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
           .text(`${d.label} (${d.frequency})`);
       })
       .on("mouseleave", function (event: MouseEvent, d: ClusterNode) {
-        setHoveredNode(null);
-
         d3.select(this)
           .transition()
           .duration(200)
@@ -195,7 +187,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
     return () => {
       simulation.stop();
     };
-  }, [clusterGraph, hoveredNode, highlightedNodeId, onNodeClick]);
+  }, [clusterGraph, highlightedNodeId, onNodeClick]);
 
   return (
     <div
