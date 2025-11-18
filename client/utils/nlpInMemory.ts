@@ -37,6 +37,28 @@ function tokenize(text: string): string[] {
     .filter((token) => token.length > 2 && !isStopword(token));
 }
 
+// Extract n-grams (phrases) from tokens
+function extractNgrams(tokens: string[]): string[] {
+  const ngrams: string[] = [];
+
+  // Add bigrams (2-word phrases)
+  for (let i = 0; i < tokens.length - 1; i++) {
+    const bigram = `${tokens[i]} ${tokens[i + 1]}`;
+    ngrams.push(bigram);
+  }
+
+  // Add trigrams (3-word phrases) if available
+  for (let i = 0; i < tokens.length - 2; i++) {
+    const trigram = `${tokens[i]} ${tokens[i + 1]} ${tokens[i + 2]}`;
+    ngrams.push(trigram);
+  }
+
+  // Also include original tokens for single-word concepts
+  ngrams.push(...tokens);
+
+  return ngrams;
+}
+
 // Common English stopwords
 const STOPWORDS = new Set([
   "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for",
