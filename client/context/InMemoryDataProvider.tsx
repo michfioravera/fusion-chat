@@ -7,9 +7,8 @@ import React, {
   ReactNode,
 } from "react";
 import { computeClusterGraph, ClusterGraph, Message } from "@/utils/nlpInMemory";
-import { v4 as uuidv4 } from "crypto-js";
 
-// Simple UUID generator without external deps
+// Simple ID generator without external dependencies
 function generateId(): string {
   return `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
 }
