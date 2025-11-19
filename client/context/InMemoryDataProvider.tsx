@@ -20,9 +20,11 @@ function generateId(): string {
 interface InMemoryContextType {
   messages: Message[];
   clusterGraph: ClusterGraph;
+  activeUsers: string[];
   addMessage: (user: string, text: string) => void;
   removeUserMessages: (user: string) => void;
   clearAllMessages: () => void;
+  registerUser: (user: string) => void;
 }
 
 const InMemoryContext = createContext<InMemoryContextType | undefined>(
