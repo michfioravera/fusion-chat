@@ -20,7 +20,8 @@ import { useNavigate } from "react-router-dom";
  */
 export default function InMemoryChat() {
   const navigate = useNavigate();
-  const { messages, activeUsers, registerUser, clearAllMessages } = useInMemoryData();
+  const { messages, activeUsers, registerUser, clearAllMessages } =
+    useInMemoryData();
 
   // Current user state
   const [currentUser, setCurrentUser] = useState<string>("");

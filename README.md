@@ -28,21 +28,25 @@ A real-time chat application with intelligent NLP-driven word clustering and int
 ## 📋 How It Works
 
 ### 1. **Message Input**
+
 Send messages as different users to build a multi-user conversation
 
 ### 2. **NLP Pipeline**
+
 - Messages are tokenized (split into words)
 - Stopwords are filtered out
 - TF-IDF scores are calculated for each word
 - K-means clustering groups similar words together
 
 ### 3. **Graph Visualization**
+
 - Nodes represent words/clusters sized by frequency
 - Node colors indicate cluster membership
 - Edges show co-occurrence relationships
 - Force simulation creates natural spacing
 
 ### 4. **Interaction**
+
 - **Drag nodes** to explore the graph layout
 - **Hover nodes** to see word frequency
 - **Click nodes** to highlight all messages containing that word
@@ -51,7 +55,8 @@ Send messages as different users to build a multi-user conversation
 ## 🎯 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - pnpm (or npm)
 
 ### Installation
@@ -79,22 +84,26 @@ pnpm run build:server
 ## 📖 Usage
 
 ### Creating Users
+
 1. Click **Users (n)** dropdown in the header
 2. Click **+ New User** to create a new user persona
 3. Start sending messages as that user
 
 ### Switching Users
+
 1. Click **Users (n)** dropdown
 2. Click any existing user to switch to them
 3. All previous messages are preserved
 
 ### Interacting with the Graph
+
 - **View word clusters**: Left side shows the force-directed graph
 - **Click a node**: Highlights all messages containing that word
 - **Drag nodes**: Rearrange the graph to explore relationships
 - **Hover nodes**: See word frequency tooltip
 
 ### Managing Messages
+
 - **Clear All**: Remove all messages from all users
 - **Logout**: Return to home (preserves all messages in browser)
 - **Switch User**: Create new users without losing history
@@ -122,17 +131,20 @@ client/
 ## 🧠 NLP Implementation Details
 
 ### Tokenization
+
 - Converts text to lowercase
 - Removes special characters
 - Filters out stopwords (common words like "the", "a", etc.)
 - Only keeps words with 3+ characters
 
 ### TF-IDF Scoring
+
 - **TF (Term Frequency)**: How often a word appears in a message
 - **IDF (Inverse Document Frequency)**: How unique a word is across all messages
 - **TF-IDF**: Product of TF and IDF for importance weighting
 
 ### K-Means Clustering
+
 - Groups words into clusters based on their TF-IDF vectors
 - Default: 3 clusters (configurable)
 - Uses Euclidean distance for similarity measurement
@@ -140,23 +152,34 @@ client/
 ## 🎨 Customization
 
 ### Change Number of Clusters
+
 Edit `client/context/InMemoryDataProvider.tsx`:
+
 ```typescript
 const graph = computeClusterGraph(messages, 3); // Change 3 to desired cluster count
 ```
 
 ### Adjust Graph Forces
+
 Edit `client/components/InMemoryGraphVisualizer.tsx`:
+
 ```typescript
 .force("charge", d3.forceManyBody().strength(-300))  // Repulsion strength
 .force("collision", d3.forceCollide().radius(40))    // Node collision radius
 ```
 
 ### Modify Stopwords
+
 Edit `client/utils/nlpInMemory.ts`:
+
 ```typescript
 const stopwords = new Set([
-  "the", "a", "an", "is", "are", "be",
+  "the",
+  "a",
+  "an",
+  "is",
+  "are",
+  "be",
   // Add more stopwords here
 ]);
 ```
@@ -164,12 +187,14 @@ const stopwords = new Set([
 ## 🚀 Deployment
 
 ### Netlify
+
 ```bash
 # Build will be automatically run on deploy
 # Configure in netlify.toml for production
 ```
 
 The app is configured to deploy to Netlify with:
+
 - Build command: `npm run build:client`
 - Publish directory: `dist/spa`
 
@@ -196,6 +221,7 @@ pnpm run format.fix       # Format code with Prettier
 ## 🤝 Contributing
 
 Feel free to extend this project:
+
 - Add persistence with a database (Supabase, Firebase, etc.)
 - Implement different clustering algorithms
 - Add message search and filtering
@@ -209,11 +235,13 @@ This project is open source and available under the MIT License.
 ## 🎓 Learning Resources
 
 ### NLP Concepts
+
 - [TF-IDF Explained](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 - [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering)
 - [Text Preprocessing](https://en.wikipedia.org/wiki/Stemming)
 
 ### Technologies
+
 - [D3.js Documentation](https://d3js.org/)
 - [React Documentation](https://react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
