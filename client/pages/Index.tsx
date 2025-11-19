@@ -38,7 +38,7 @@ export default function Index() {
               </span>
             </div>
             <Button
-              onClick={() => navigate("/app")}
+              onClick={() => navigate("/chat")}
               className="bg-blue-600 hover:bg-blue-700 text-white border-0"
             >
               Launch App <ArrowRight className="w-4 h-4 ml-2" />
