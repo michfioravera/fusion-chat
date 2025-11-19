@@ -126,7 +126,7 @@ export default function InMemoryChat() {
 
           <div className="flex items-center gap-2">
             {/* User Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={userDropdownRef}>
               <button
                 onClick={() => setShowUserDropdown(!showUserDropdown)}
                 className="px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 transition-colors flex items-center gap-2"
