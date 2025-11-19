@@ -89,14 +89,13 @@ declare global {
 }
 
 // Initialize React root only once, reuse on HMR updates
-if (typeof window !== "undefined") {
-  const root = document.getElementById("root");
-  if (root) {
-    if (!window.__appRoot) {
-      window.__appRoot = createRoot(root);
-    }
-    window.__appRoot.render(<App />);
-  } else {
-    console.error("Root element not found");
-  }
+const root = document.getElementById("root");
+if (root && !window.__appRoot) {
+  window.__appRoot = createRoot(root);
+}
+
+if (root && window.__appRoot) {
+  window.__appRoot.render(<App />);
+} else if (!root) {
+  console.error("Root element not found");
 }
