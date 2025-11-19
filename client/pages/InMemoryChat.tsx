@@ -4,7 +4,7 @@ import { InMemoryGraphVisualizer } from "@/components/InMemoryGraphVisualizer";
 import { InMemoryChatWindow } from "@/components/InMemoryChatWindow";
 import { InMemoryChatInput } from "@/components/InMemoryChatInput";
 import { ClusterNode } from "@/utils/nlpInMemory";
-import { LogOut, MessageCircle, Zap } from "lucide-react";
+import { LogOut, MessageCircle, Zap, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 /**
