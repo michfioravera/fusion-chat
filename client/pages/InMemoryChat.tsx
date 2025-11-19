@@ -106,12 +106,47 @@ export default function InMemoryChat() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleChangeUser}
-              className="px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 transition-colors"
-            >
-              Switch User
-            </button>
+            {/* User Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setShowUserDropdown(!showUserDropdown)}
+                className="px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 transition-colors flex items-center gap-2"
+              >
+                Users ({activeUsers.length})
+                <ChevronDown className="w-4 h-4" />
+              </button>
+
+              {showUserDropdown && (
+                <div className="absolute right-0 mt-2 w-56 bg-slate-800 border border-white/10 rounded-lg shadow-lg z-50">
+                  <div className="p-3 space-y-2 max-h-48 overflow-y-auto">
+                    {activeUsers.length > 0 ? (
+                      <>
+                        {activeUsers.map((user) => (
+                          <button
+                            key={user}
+                            onClick={() => handleSwitchUser(user)}
+                            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                              currentUser === user
+                                ? "bg-blue-600 text-white font-medium"
+                                : "text-gray-300 hover:bg-white/10"
+                            }`}
+                          >
+                            {user}
+                          </button>
+                        ))}
+                        <div className="border-t border-white/10 my-2" />
+                      </>
+                    ) : null}
+                    <button
+                      onClick={handleCreateNewUser}
+                      className="w-full text-left px-3 py-2 rounded-lg text-sm text-green-400 hover:bg-green-600/20 transition-colors font-medium"
+                    >
+                      + New User
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             <button
               onClick={handleClearAll}
               className="px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-red-500/20 hover:text-red-300 transition-colors"
