@@ -20,11 +20,12 @@ import { useNavigate } from "react-router-dom";
  */
 export default function InMemoryChat() {
   const navigate = useNavigate();
-  const { messages, removeUserMessages, clearAllMessages } = useInMemoryData();
+  const { messages, activeUsers, registerUser, clearAllMessages } = useInMemoryData();
 
   // Current user state
   const [currentUser, setCurrentUser] = useState<string>("");
   const [isInitialized, setIsInitialized] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
 
   // Graph interaction state
   const [selectedNode, setSelectedNode] = useState<ClusterNode | null>(null);
@@ -34,13 +35,15 @@ export default function InMemoryChat() {
     const storedUser = localStorage.getItem("inMemoryChatUser");
     if (storedUser) {
       setCurrentUser(storedUser);
+      registerUser(storedUser);
     } else {
       const newUser = `User_${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
       localStorage.setItem("inMemoryChatUser", newUser);
       setCurrentUser(newUser);
+      registerUser(newUser);
     }
     setIsInitialized(true);
-  }, []);
+  }, [registerUser]);
 
   if (!isInitialized) {
     return (
