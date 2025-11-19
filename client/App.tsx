@@ -84,7 +84,11 @@ const App = () => {
 
 const root = document.getElementById("root");
 if (root) {
-  createRoot(root).render(<App />);
+  // Check if root already has a React root to prevent multiple createRoot calls
+  const existingRoot = (root as any)._reactRootContainer;
+  if (!existingRoot) {
+    createRoot(root).render(<App />);
+  }
 } else {
   console.error("Root element not found");
 }
