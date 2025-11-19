@@ -82,13 +82,18 @@ const App = () => {
   );
 };
 
-const root = document.getElementById("root");
-if (root) {
-  // Check if root already has a React root to prevent multiple createRoot calls
-  const existingRoot = (root as any)._reactRootContainer;
-  if (!existingRoot) {
-    createRoot(root).render(<App />);
+let appRoot: any = null;
+
+function renderApp() {
+  const root = document.getElementById("root");
+  if (root) {
+    if (!appRoot) {
+      appRoot = createRoot(root);
+    }
+    appRoot.render(<App />);
+  } else {
+    console.error("Root element not found");
   }
-} else {
-  console.error("Root element not found");
 }
+
+renderApp();
