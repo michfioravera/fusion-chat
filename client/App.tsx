@@ -84,36 +84,19 @@ const App = () => {
 
 declare global {
   interface Window {
-    __appRoot?: any;
+    __reactAppRoot?: any;
   }
 }
 
 // Initialize React root only once, reuse on HMR updates
-function initializeApp() {
-  const rootElement = document.getElementById("root");
-  if (!rootElement) {
-    console.error("Root element not found");
-    return;
+const rootContainer = document.getElementById("root");
+if (rootContainer) {
+  // Only create root if it doesn't exist
+  if (!window.__reactAppRoot) {
+    window.__reactAppRoot = createRoot(rootContainer);
   }
-
-  // Check if root already has a React root attached
-  const rootKey = Object.keys(rootElement).find(
-    (key) =>
-      key.startsWith("__react") ||
-      key.startsWith("__reactFiber") ||
-      key.startsWith("__reactProps")
-  );
-
-  if (!window.__appRoot) {
-    window.__appRoot = createRoot(rootElement);
-  }
-
-  window.__appRoot.render(<App />);
-}
-
-// Run initialization when DOM is ready
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeApp);
+  // Always render with the existing root
+  window.__reactAppRoot.render(<App />);
 } else {
-  initializeApp();
+  console.error("Root element not found");
 }
