@@ -75,10 +75,18 @@ export default function InMemoryChat() {
     }
   };
 
-  const handleChangeUser = () => {
+  const handleCreateNewUser = () => {
     const newUser = `User_${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
     localStorage.setItem("inMemoryChatUser", newUser);
     setCurrentUser(newUser);
+    registerUser(newUser);
+    setShowUserDropdown(false);
+  };
+
+  const handleSwitchUser = (user: string) => {
+    localStorage.setItem("inMemoryChatUser", user);
+    setCurrentUser(user);
+    setShowUserDropdown(false);
   };
 
   return (
