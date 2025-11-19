@@ -26,9 +26,28 @@ export default function InMemoryChat() {
   const [currentUser, setCurrentUser] = useState<string>("");
   const [isInitialized, setIsInitialized] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const userDropdownRef = React.useRef<HTMLDivElement>(null);
 
   // Graph interaction state
   const [selectedNode, setSelectedNode] = useState<ClusterNode | null>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        userDropdownRef.current &&
+        !userDropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowUserDropdown(false);
+      }
+    }
+
+    if (showUserDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [showUserDropdown]);
 
   // Initialize user on mount
   useEffect(() => {
