@@ -33,6 +33,7 @@ const InMemoryContext = createContext<InMemoryContextType | undefined>(
 
 export function InMemoryDataProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [activeUsers, setActiveUsers] = useState<string[]>([]);
   const [clusterGraph, setClusterGraph] = useState<ClusterGraph>({
     nodes: [],
     edges: [],
