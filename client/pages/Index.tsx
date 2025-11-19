@@ -76,7 +76,7 @@ export default function Index() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800/50"
+                className="border-white/30 text-white hover:bg-white/10 hover:border-white/50"
                 onClick={() =>
                   document
                     .getElementById("features")
