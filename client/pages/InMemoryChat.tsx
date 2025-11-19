@@ -60,7 +60,6 @@ export default function InMemoryChat() {
   };
 
   const handleLogout = () => {
-    removeUserMessages(currentUser);
     localStorage.removeItem("inMemoryChatUser");
     setCurrentUser("");
     navigate("/");
