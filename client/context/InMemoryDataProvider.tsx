@@ -64,12 +64,23 @@ export function InMemoryDataProvider({ children }: { children: ReactNode }) {
     setMessages([]);
   }, []);
 
+  const registerUser = useCallback((user: string) => {
+    setActiveUsers((prev) => {
+      if (!prev.includes(user)) {
+        return [...prev, user];
+      }
+      return prev;
+    });
+  }, []);
+
   const value: InMemoryContextType = {
     messages,
     clusterGraph,
+    activeUsers,
     addMessage,
     removeUserMessages,
     clearAllMessages,
+    registerUser,
   };
 
   return (
