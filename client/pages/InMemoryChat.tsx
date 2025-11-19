@@ -74,8 +74,9 @@ export default function InMemoryChat() {
   };
 
   const handleChangeUser = () => {
-    localStorage.removeItem("inMemoryChatUser");
-    window.location.reload();
+    const newUser = `User_${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+    localStorage.setItem("inMemoryChatUser", newUser);
+    setCurrentUser(newUser);
   };
 
   return (
