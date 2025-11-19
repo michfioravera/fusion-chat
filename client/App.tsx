@@ -82,18 +82,18 @@ const App = () => {
   );
 };
 
-let appRoot: any = null;
+const root = document.getElementById("root");
+if (root) {
+  // Check if a React root already exists on this element
+  const existingRoot = (root as any)._reactRootContainer || (root as any)._reactRoot;
 
-function renderApp() {
-  const root = document.getElementById("root");
-  if (root) {
-    if (!appRoot) {
-      appRoot = createRoot(root);
-    }
-    appRoot.render(<App />);
+  if (existingRoot) {
+    // Use existing root for HMR updates
+    existingRoot.render(<App />);
   } else {
-    console.error("Root element not found");
+    // Create new root on first load
+    createRoot(root).render(<App />);
   }
+} else {
+  console.error("Root element not found");
 }
-
-renderApp();
