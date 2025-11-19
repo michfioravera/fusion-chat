@@ -82,11 +82,21 @@ const App = () => {
   );
 };
 
-const root = document.getElementById("root");
-if (root) {
-  // Store the root instance on the DOM element to persist across HMR reloads
-  const appRoot = ((root as any).__appRoot ??= createRoot(root));
-  appRoot.render(<App />);
-} else {
-  console.error("Root element not found");
+declare global {
+  interface Window {
+    __appRoot?: any;
+  }
+}
+
+// Initialize React root only once, reuse on HMR updates
+if (typeof window !== "undefined") {
+  const root = document.getElementById("root");
+  if (root) {
+    if (!window.__appRoot) {
+      window.__appRoot = createRoot(root);
+    }
+    window.__appRoot.render(<App />);
+  } else {
+    console.error("Root element not found");
+  }
 }
