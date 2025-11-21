@@ -180,12 +180,6 @@ export default function InMemoryChat() {
               <LogOut className="w-4 h-4" />
               Logout
             </button>
-            <button
-              onClick={() => navigate("/")}
-              className="px-3 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors"
-            >
-              Back to Home
-            </button>
           </div>
         </div>
       </header>
