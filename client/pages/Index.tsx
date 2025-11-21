@@ -4,7 +4,6 @@ import {
   Zap,
   MessageSquare,
   Network,
-  Sparkles,
   ArrowRight,
 } from "lucide-react";
 
