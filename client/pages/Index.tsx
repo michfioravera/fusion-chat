@@ -64,16 +64,6 @@ export default function Index() {
               force-directed graph.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Button
-                onClick={() => navigate("/chat")}
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 text-base px-8"
-              >
-                <Sparkles className="w-5 h-5 mr-2" />
-                Launch Chat
-              </Button>
-            </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-4">
