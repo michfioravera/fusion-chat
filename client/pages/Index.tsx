@@ -41,7 +41,7 @@ export default function Index() {
               onClick={() => navigate("/chat")}
               className="bg-blue-600 hover:bg-blue-700 text-white border-0"
             >
-              Launch App <ArrowRight className="w-4 h-4 ml-2" />
+              Launch Chat <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
         </nav>
@@ -71,19 +71,7 @@ export default function Index() {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 text-base px-8"
               >
                 <Sparkles className="w-5 h-5 mr-2" />
-                Start Chatting
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white hover:bg-white/10 hover:border-white/50"
-                onClick={() =>
-                  document
-                    .getElementById("features")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                Learn More
+                Launch Chat
               </Button>
             </div>
 
@@ -240,14 +228,6 @@ export default function Index() {
               organized and visualized in real-time. Everything runs in your
               browser with zero external dependencies.
             </p>
-            <Button
-              onClick={() => navigate("/chat")}
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 text-base px-8"
-            >
-              <Sparkles className="w-5 h-5 mr-2" />
-              Launch Fusion Chat Now
-            </Button>
           </div>
         </div>
       </div>
