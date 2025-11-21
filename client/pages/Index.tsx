@@ -1,11 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  Zap,
-  MessageSquare,
-  Network,
-  ArrowRight,
-} from "lucide-react";
+import { Zap, MessageSquare, Network, ArrowRight } from "lucide-react";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -62,7 +57,6 @@ export default function Index() {
               conversations evolve in real-time through an intelligent,
               force-directed graph.
             </p>
-
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-4">
