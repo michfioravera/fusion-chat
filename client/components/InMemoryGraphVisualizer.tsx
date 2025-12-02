@@ -193,7 +193,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
   return (
     <div
       ref={containerRef}
-      className="w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg overflow-hidden"
+      className="relative w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg overflow-hidden"
     >
       <svg
         ref={svgRef}
