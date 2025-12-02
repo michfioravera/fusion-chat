@@ -2,7 +2,7 @@
 
 A real-time chat application with intelligent NLP-driven word clustering and interactive D3.js force-directed graph visualization. Perfect for simulating multi-user conversations and exploring message patterns through dynamic graph interactions.
 
-## ✨ Features
+## Features
 
 - **Multi-User Chat**: Create and switch between different user personas seamlessly
 - **Smart Word Clustering**: Uses TF-IDF and K-means clustering to group related words
@@ -12,7 +12,7 @@ A real-time chat application with intelligent NLP-driven word clustering and int
 - **Message Highlighting**: Click graph nodes to highlight all messages containing that word
 - **Responsive Design**: Beautiful dark-themed UI that works on all screen sizes
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Frontend**: React 18 + TypeScript
 - **Visualization**: D3.js (force-directed graph)
@@ -25,7 +25,7 @@ A real-time chat application with intelligent NLP-driven word clustering and int
 - **Routing**: React Router
 - **State Management**: React Context API
 
-## 📋 How It Works
+## How It Works
 
 ### 1. **Message Input**
 
@@ -52,7 +52,7 @@ Send messages as different users to build a multi-user conversation
 - **Click nodes** to highlight all messages containing that word
 - **Switch users** using the user dropdown to control different personas
 
-## 🎯 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ pnpm run build:client
 pnpm run build:server
 ```
 
-## 📖 Usage
+## Usage
 
 ### Creating Users
 
@@ -108,7 +108,7 @@ pnpm run build:server
 - **Logout**: Return to home (preserves all messages in browser)
 - **Switch User**: Create new users without losing history
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 client/
@@ -128,7 +128,7 @@ client/
 └── App.tsx                            # Main app component
 ```
 
-## 🧠 NLP Implementation Details
+## NLP Implementation Details
 
 ### Tokenization
 
@@ -149,7 +149,7 @@ client/
 - Default: 3 clusters (configurable)
 - Uses Euclidean distance for similarity measurement
 
-## 🎨 Customization
+## Customization
 
 ### Change Number of Clusters
 
@@ -184,7 +184,7 @@ const stopwords = new Set([
 ]);
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Netlify
 
@@ -218,7 +218,7 @@ pnpm run format.fix       # Format code with Prettier
 - **Graph Updates**: The graph recalculates whenever a new message is added
 - **Performance**: Optimized to display top 15 most frequent words to maintain performance
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to extend this project:
 
@@ -228,11 +228,11 @@ Feel free to extend this project:
 - Create custom graph layouts
 - Export conversation data
 
-## 📄 License
+## License
 
 This project is open source and available under the MIT License.
 
-## 🎓 Learning Resources
+## Learning Resources
 
 ### NLP Concepts
 
@@ -246,6 +246,3 @@ This project is open source and available under the MIT License.
 - [React Documentation](https://react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
----
-
-**Built with ❤️ using React, D3.js, and TypeScript**
