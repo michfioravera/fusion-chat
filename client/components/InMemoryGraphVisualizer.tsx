@@ -32,14 +32,42 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
   const { clusterGraph } = useInMemoryData();
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+  // Monitor container size changes
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setContainerSize({
+        width: container.clientWidth,
+        height: container.clientHeight,
+      });
+    });
+
+    resizeObserver.observe(container);
+
+    // Initial size
+    setContainerSize({
+      width: container.clientWidth,
+      height: container.clientHeight,
+    });
+
+    return () => resizeObserver.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!svgRef.current || !containerRef.current || !clusterGraph) {
       return;
     }
 
-    const width = containerRef.current.clientWidth;
-    const height = containerRef.current.clientHeight;
+    const width = containerSize.width;
+    const height = containerSize.height;
+
+    if (width === 0 || height === 0) {
+      return;
+    }
 
     // Copy data for D3
     const nodes: (ClusterNode & {
