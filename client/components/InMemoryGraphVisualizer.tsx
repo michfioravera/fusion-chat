@@ -216,7 +216,7 @@ export const InMemoryGraphVisualizer: React.FC<GraphVisualizerProps> = ({
     return () => {
       simulation.stop();
     };
-  }, [clusterGraph, highlightedNodeId, onNodeClick]);
+  }, [clusterGraph, highlightedNodeId, onNodeClick, containerSize]);
 
   return (
     <div
